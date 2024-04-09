@@ -1,5 +1,5 @@
-import {useState} from 'react'
-import { useAsyncError } from 'react-router-dom';
+import {useState} from 'react';
+import axios from 'axios';
 
 function CreateUser() {
     const [inputs, setInputs] = useState({});
@@ -11,6 +11,7 @@ function CreateUser() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
+        axios.post('http://localhost:8005/api/', inputs);
         console.log(inputs);
     };
 
@@ -23,9 +24,9 @@ function CreateUser() {
         <label>Name:</label>
         <input type='text' name='name' onChange={handleChange}/><br/>
         <label>Email: </label>
-        <input type='text' name='email'/><br/>
+        <input type='text' name='email' onChange={handleChange}/><br/>
         <label>Mobile: </label>
-        <input type='text' name='mobile'/><br/>
+        <input type='text' name='mobile'onChange={handleChange}/><br/>
         <button>Save</button>
       </form>
     </div>
